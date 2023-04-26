@@ -1,0 +1,32 @@
+{
+  "name": "processing-accidents",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha ./test/test.js",
+    "lint": "eslint --ignore-path .gitignore .",
+    "lint-fix": "eslint --ignore-path .gitignore --fix ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/data-fair/processing-accidents.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/data-fair/processing-accidents/issues"
+  },
+  "homepage": "https://github.com/data-fair/processing-accidents#readme",
+  "devDependencies": {
+    "@data-fair/processings-test-utils": "^0.5.1",
+    "config": "^3.3.9",
+    "eslint": "^7.18.0",
+    "mocha": "^10.2.0",
+    "standard": "^16.0.3"
+  }
+}
