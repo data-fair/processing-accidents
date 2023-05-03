@@ -44,8 +44,7 @@ describe('gloab test', function () {
       },
       processingConfig: {
         datasetMode: 'create',
-        dataset: { id: 'accidents-test2', title: 'accidents test2' },
-        filter: '56'
+        dataset: { id: 'accidents-test2', title: 'accidents test2' }
       },
       tmpDir: 'data'
     }, config, false)
