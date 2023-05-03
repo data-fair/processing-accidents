@@ -43,7 +43,7 @@ describe('gloab test', function () {
         url: 'https://www.data.gouv.fr/api/1/datasets/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2021/'
       },
       processingConfig: {
-        datasetMode: 'create',
+        datasetMode: 'update',
         dataset: { id: 'accidents-test2', title: 'accidents test2' }
       },
       tmpDir: 'data'

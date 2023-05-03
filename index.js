@@ -13,10 +13,8 @@ exports.run = async ({ pluginConfig, processingConfig, tmpDir, axios, log, patch
 
   if (processingConfig.datasetMode === 'update') {
     await log.step('Mise à jour du jeu de données')
-    if (processingConfig.forceUpdate) {
-      await log.info('Mise à jour du schéma')
-      formData.append('schema', JSON.stringify(schema))
-    }
+    await log.info('Mise à jour du schéma')
+    formData.append('schema', JSON.stringify(schema))
   } else {
     formData.append('schema', JSON.stringify(schema))
     formData.append('title', processingConfig.dataset.title)
