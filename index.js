@@ -1,4 +1,4 @@
-const { download } = require('./lib/download')
+const download = require('./lib/download')
 const process = require('./lib/process')
 const util = require('util')
 const fs = require('fs-extra')

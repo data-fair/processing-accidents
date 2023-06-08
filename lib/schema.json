@@ -84,7 +84,8 @@
     },
     "title": "Latitude ",
     "x-group": "Localisation de l'accident",
-    "label": "Latitude "
+    "label": "Latitude ",
+    "x-refersTo": "http://schema.org/latitude"
   },
   {
     "key": "long",
@@ -99,7 +100,8 @@
     },
     "title": "Longitude ",
     "x-group": "Localisation de l'accident",
-    "label": "Longitude "
+    "label": "Longitude ",
+    "x-refersTo": "http://schema.org/longitude"
   },
   {
     "key": "int",
