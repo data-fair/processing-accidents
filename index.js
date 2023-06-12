@@ -8,7 +8,7 @@ const FormData = require('form-data')
 
 exports.run = async ({ pluginConfig, processingConfig, tmpDir, axios, log, patchConfig }) => {
   const formData = new FormData()
-  await download(pluginConfig, tmpDir, axios, log)
+  await download(processingConfig, tmpDir, axios, log)
   await process(processingConfig, tmpDir, log)
 
   if (processingConfig.datasetMode === 'update') {

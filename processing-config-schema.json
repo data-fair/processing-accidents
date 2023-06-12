@@ -43,7 +43,12 @@
         "filter":{
             "type" :"integer",
             "title": "Filtrer les accidents par département"
-        }
+        },
+        "url":{
+          "type" :"string",
+          "title": "URL de la source des données",
+          "default" :"https://www.data.gouv.fr/api/1/datasets/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2021/"
+      }
       }
     }]
   }
