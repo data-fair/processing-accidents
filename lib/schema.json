@@ -561,16 +561,16 @@
       "values": true
     },
     "x-labels": {
-      "0": "Sans objet",
-      "1": "Véhicule en stationnement",
-      "2": "Arbre",
-      "3": "Glissière métallique",
-      "4": "Glissière béton",
-      "5": "Autre glissière",
-      "6": "Bâtiment, mur, pile de pont",
-      "7": "Support de signalisation verticale ou poste d'appel d'urgence",
-      "8": "Poteau",
-      "9": "Mobilier urbain",
+      "00": "Sans objet",
+      "01": "Véhicule en stationnement",
+      "02": "Arbre",
+      "03": "Glissière métallique",
+      "04": "Glissière béton",
+      "05": "Autre glissière",
+      "06": "Bâtiment, mur, pile de pont",
+      "07": "Support de signalisation verticale ou poste d'appel d'urgence",
+      "08": "Poteau",
+      "09": "Mobilier urbain",
       "10": "Parapet",
       "11": "Ilot, refuge, borne haute",
       "12": "Bordure de trottoir",
@@ -771,7 +771,7 @@
       "textAgg": false,
       "text": true,
       "textStandard": false,
-      "values": false
+      "values": true
     },
     "x-labels": {
       "0": "Inconnue",
