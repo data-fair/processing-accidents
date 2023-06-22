@@ -105,8 +105,9 @@
   },
   {
     "key": "int",
-    "type": "integer",
+    "type": "string",
     "description": "Type d'intersection de l'accident",
+    "ignoreDetection": true,
     "x-capabilities": {
       "insensitive": false,
       "textAgg": false,
@@ -132,8 +133,9 @@
   },
   {
     "key": "col",
-    "type": "integer",
+    "type": "string",
     "description": "Type de collision de l'accident",
+    "ignoreDetection": true,
     "x-capabilities": {
       "insensitive": false,
       "textAgg": false,
@@ -157,8 +159,9 @@
   },
   {
     "key": "lum",
-    "type": "integer",
+    "type": "string",
     "description": "Luminosité durant l'accident",
+    "ignoreDetection": true,
     "x-capabilities": {
       "textStandard": false
     },
@@ -175,8 +178,9 @@
   },
   {
     "key": "atm",
-    "type": "integer",
+    "type": "string",
     "description": "Conditions atmosphériques durant l'accident",
+    "ignoreDetection": true,
     "x-capabilities": {
       "insensitive": false,
       "textAgg": false,
@@ -202,8 +206,9 @@
   },
   {
     "key": "catr",
-    "type": "integer",
+    "type": "string",
     "description": "Catégorie de route de l'accident",
+    "ignoreDetection": true,
     "x-capabilities": {
       "insensitive": false,
       "textAgg": false,
@@ -227,8 +232,9 @@
   },
   {
     "key": "circ",
-    "type": "integer",
+    "type": "string",
     "description": "Circulation durant l'accident",
+    "ignoreDetection": true,
     "x-capabilities": {
       "insensitive": false,
       "textAgg": false,
@@ -263,8 +269,9 @@
   },
   {
     "key": "prof",
-    "type": "integer",
+    "type": "string",
     "description": "Profil en long de la route de l'accident",
+    "ignoreDetection": true,
     "x-capabilities": {
       "insensitive": false,
       "textAgg": false,
@@ -285,8 +292,9 @@
   },
   {
     "key": "plan",
-    "type": "integer",
+    "type": "string",
     "description": "Tracé en plan de la route de l'accident",
+    "ignoreDetection": true,
     "x-capabilities": {
       "insensitive": false,
       "textAgg": false,
@@ -344,8 +352,9 @@
   },
   {
     "key": "surf",
-    "type": "integer",
+    "type": "string",
     "description": "Etat de la surface de la route de l'accident",
+    "ignoreDetection": true,
     "x-capabilities": {
       "insensitive": false,
       "textAgg": false,
@@ -371,8 +380,9 @@
   },
   {
     "key": "infra",
-    "type": "integer",
+    "type": "string",
     "description": "Infrastructure de la route de l'accident",
+    "ignoreDetection": true,
     "x-capabilities": {
       "insensitive": false,
       "textAgg": false,
@@ -399,8 +409,9 @@
   },
   {
     "key": "situ",
-    "type": "integer",
+    "type": "string",
     "description": "Situation de l'accident",
+    "ignoreDetection": true,
     "x-capabilities": {
       "insensitive": false,
       "textAgg": false,
@@ -425,8 +436,9 @@
   },
   {
     "key": "grav",
-    "type": "integer",
+    "type": "string",
     "description": "Gravité de l'accident",
+    "ignoreDetection": true,
     "x-capabilities": {
       "textStandard": false
     },
@@ -442,8 +454,9 @@
   },
   {
     "key": "sexe",
-    "type": "integer",
+    "type": "string",
     "description": "Sexe de la victime",
+    "ignoreDetection": true,
     "x-capabilities": {
       "textStandard": false
     },
@@ -468,8 +481,9 @@
   },
   {
     "key": "trajet",
-    "type": "integer",
+    "type": "string",
     "description": "Trajet de la victime",
+    "ignoreDetection": true,
     "x-capabilities": {
       "textStandard": false
     },
@@ -491,6 +505,7 @@
     "key": "equipement",
     "type": "string",
     "description": "Equipement de la victime",
+    "ignoreDetection": true,
     "x-capabilities": {
       "insensitive": false,
       "textAgg": false,
@@ -518,8 +533,9 @@
   },
   {
     "key": "secuexist",
-    "type": "integer",
+    "type": "string",
     "description": "Critère indiquant si la visctime utilisait un équipement de sécurité",
+    "ignoreDetection": true,
     "x-capabilities": {
       "textStandard": false
     },
@@ -534,8 +550,9 @@
   },
   {
     "key": "obs",
-    "type": "integer",
+    "type": "string",
     "description": "Obstacle fixe heurté durant l'accident (si obstacle fixe heurté)",
+    "ignoreDetection": true,
     "x-capabilities": {
       "insensitive": false,
       "textAgg": false,
@@ -570,8 +587,9 @@
   },
   {
     "key": "obsm",
-    "type": "integer",
+    "type": "string",
     "description": "Obstacle mobile heurté durant l'accident (si obstacle mobile heurté)",
+    "ignoreDetection": true,
     "x-capabilities": {
       "insensitive": false,
       "textAgg": false,
@@ -596,8 +614,9 @@
   },
   {
     "key": "choc",
-    "type": "integer",
+    "type": "string",
     "description": "Description du choc subi (si choc)",
+    "ignoreDetection": true,
     "x-capabilities": {
       "insensitive": false,
       "textAgg": false,
@@ -624,8 +643,9 @@
   },
   {
     "key": "manv",
-    "type": "integer",
+    "type": "string",
     "description": "Manoeuvre du véhicule avant l'accident (si manoeuvre)",
+    "ignoreDetection": true,
     "x-capabilities": {
       "insensitive": false,
       "textAgg": false,
@@ -686,6 +706,7 @@
     "key": "typevehicules",
     "type": "string",
     "description": "Type des véhicules liés à l'accident",
+    "ignoreDetection": true,
     "x-capabilities": {
       "insensitive": false,
       "textAgg": false,
@@ -744,12 +765,13 @@
     "key": "manoeuvehicules",
     "type": "string",
     "description": "Manoeuvre des véhicules lié à l'accident (si manoeuvre)",
+    "ignoreDetection": true,
     "x-capabilities": {
       "insensitive": false,
       "textAgg": false,
       "text": true,
       "textStandard": false,
-      "values": true
+      "values": false
     },
     "x-labels": {
       "0": "Inconnue",
@@ -803,8 +825,9 @@
   },
   {
     "key": "agg",
-    "type": "integer",
+    "type": "string",
     "description": "Accident en agglomération ou hors agglomération",
+    "ignoreDetection": true,
     "x-capabilities": {
       "insensitive": false,
       "textAgg": false,
