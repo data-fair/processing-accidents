@@ -9,7 +9,7 @@ describe('gloab test', function () {
     const context = testUtils.context({
       processingConfig: {
         datasetMode: 'update',
-        url: 'https://www.data.gouv.fr/api/1/datasets/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2021/',
+        url: 'https://www.data.gouv.fr/api/1/datasets/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2023/',
         dataset: { id: 'accidents-test', title: 'accidents test' }
       },
       tmpDir: 'data'
