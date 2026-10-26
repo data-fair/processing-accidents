@@ -117,7 +117,7 @@ export default async (processingConfig: ProcessingConfig, dir: string, log: Proc
         accident.manoeuvehicules = parseManoeuvehicules(accident.manoeuvehicules)
       }
       if (filter && accident.dep !== filter) continue
-      accidentWrite.push(Object.fromEntries(fieldKeys.map(f => [f, accident[f] || ''])))
+      accidentWrite.push(Object.fromEntries(fieldKeys.map(f => [f, accident[f] ?? ''])))
     }
     if (accidentWrite.length > 0) {
       await log.info('Ecriture du fichier csv')

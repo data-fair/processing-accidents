@@ -54,8 +54,9 @@ export default async (year: number, dir: string, log: ProcessingContext<Processi
       row.jour = JOURS[mDate.getDay()]
       row.mois = MOIS[mDate.getMonth()]
       row.hrmn = row.hrmn.padStart(4, '0').substring(0, 2) + ':' + row.hrmn.padStart(4, '0').substring(2)
-      row.lat = latSign(row.gps) + Number(row.lat) / 100000
-      row.long = lonSign(row.gps) + Number(row.long) / 100000
+      // empty or 0 means not geolocated, keep it empty instead of placing the accident at 0,0
+      row.lat = Number(row.lat) ? latSign(row.gps) + Number(row.lat) / 100000 : ''
+      row.long = Number(row.long) ? lonSign(row.gps) + Number(row.long) / 100000 : ''
       for (const [key, value] of Object.entries(row)) {
         if (keyCaracteristiques.has(key)) {
           accidents[row.Num_Acc][key] = value
@@ -110,7 +111,7 @@ export default async (year: number, dir: string, log: ProcessingContext<Processi
           u[key] = value
         }
       }
-      u.age = Number(accidents[row.Num_Acc].date.substring(0, 4)) - Number(row.an_nais)
+      u.age = Number(row.an_nais) ? Number(accidents[row.Num_Acc].date.substring(0, 4)) - Number(row.an_nais) : ''
       u.equipement = (row.secu[0] === undefined) ? 8 : row.secu[0]
       if (row.secu !== '00') {
         u.secuexist = (row.secu[1]) ? row.secu[1] : 3
@@ -118,8 +119,8 @@ export default async (year: number, dir: string, log: ProcessingContext<Processi
         u.secuexist = 3
       }
 
-      // a non-pedestrian user has locp "0" until 2017, "" in 2018 and " -1" since 2019
-      if (!['', '0', '-1'].includes(row.locp.trim())) {
+      // a pedestrian is attached to the vehicle that hit them: catu 3 (locp is not reliably filled)
+      if (row.catu.trim() === '3') {
         v.pietons.push(u)
       } else {
         v.usagers.push(u)
