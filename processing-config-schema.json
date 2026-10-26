@@ -1,54 +1,66 @@
 {
-    "type": "object",
-    "x-display": "tabs",
-    "required": ["datasetMode"],
-    "allOf": [{
+  "type": "object",
+  "layout": "tabs",
+  "required": ["datasetMode"],
+  "allOf": [
+    {
       "title": "Jeu de données",
-      "oneOf": [{
-        "title": "Créer un jeu de données",
-        "required": ["dataset"],
-        "properties": {
-          "datasetMode": { "type": "string", "const": "create", "title": "Action" },
-          "dataset": {
-            "type": "object",
-            "required": ["title"],
-            "properties": {
-              "title": {"type": "string", "title": "Titre du jeu de donnée", "default": "accidents de velo"}
+      "oneOf": [
+        {
+          "title": "Créer un jeu de données",
+          "required": ["datasetMode"],
+          "properties": {
+            "datasetMode": { "type": "string", "const": "create", "title": "Action" },
+            "datasetTitle": {
+              "type": "string",
+              "title": "Titre du jeu de données à créer",
+              "default": "accidents de velo",
+              "description": "Le jeu de données est créé au premier lancement, puis le traitement passe automatiquement en mode mise à jour."
+            }
+          }
+        },
+        {
+          "title": "Mettre à jour un jeu de données",
+          "required": ["dataset"],
+          "properties": {
+            "datasetMode": { "type": "string", "const": "update", "title": "Action" },
+            "dataset": {
+              "type": "object",
+              "title": "Jeu de données existant",
+              "layout": {
+                "getItems": {
+                  "url": "${context.dataFairUrl}/api/v1/datasets?select=id,title&size=50&${context.ownerFilter}&raw=true",
+                  "qSearchParam": "q",
+                  "itemsResults": "data.results",
+                  "itemTitle": "item.title",
+                  "itemKey": "item.id"
+                }
+              },
+              "properties": {
+                "id": { "type": "string", "title": "Identifiant" },
+                "href": { "type": "string", "title": "url" },
+                "title": { "type": "string", "title": "Titre" }
+              }
             }
           }
         }
-      }, {
-        "title": "Mettre à jour un jeu de données",
-        "required": ["dataset"],
-        "properties": {
-          "datasetMode": { "type": "string", "const": "update" },
-          "dataset": {
-            "type": "object",
-            "title": "Jeu de donnée existant",
-            "x-fromUrl": "{context.dataFairUrl}/api/v1/datasets?q={q}&select=id,title&{context.ownerFilter}",
-            "x-itemsProp": "results",
-            "x-itemTitle": "title",
-            "x-itemKey": "id",
-            "properties": {
-              "id": {"type": "string", "title": "Identifiant"},
-              "href": { "type": "string", "title": "url" },
-              "title": {"type": "string", "title": "Titre"}
-            }
-          }
-        }
-      }]
-    }, {
+      ]
+    },
+    {
       "title": "Paramètres",
       "properties": {
-        "filter":{
-            "type" :"integer",
-            "title": "Filtrer les accidents par département"
+        "filter": {
+          "type": "integer",
+          "title": "Filtrer les accidents par département",
+          "description": "Numéro du département (ex. 56). Laisser vide pour garder toute la France."
         },
-        "url":{
-          "type" :"string",
+        "url": {
+          "type": "string",
           "title": "URL de la source des données",
-          "default" :"https://www.data.gouv.fr/api/1/datasets/bases-de-donnees-annuelles-des-accidents-corporels-de-la-circulation-routiere-annees-de-2005-a-2021/"
+          "description": "API data.gouv du jeu « Bases de données annuelles des accidents corporels de la circulation routière ». Toutes les années publiées sont traitées.",
+          "default": "https://www.data.gouv.fr/api/1/datasets/53698f4ca3a729239d2036df/"
+        }
       }
-      }
-    }]
-  }
+    }
+  ]
+}
