@@ -109,7 +109,8 @@ export default async (year: number, dir: string, log: ProcessingContext<Processi
       u.equipement = equipementSecu(equipement)
       const containsValue = (u.equipement !== '')
       u.secuexist = (containsValue) ? 1 : 2
-      if (row.locp !== '0') {
+      // a non-pedestrian user has locp "0" until 2017, "" in 2018 and " -1" since 2019
+      if (!['', '0', '-1'].includes(row.locp.trim())) {
         v.pietons.push(u)
       } else {
         v.usagers.push(u)
