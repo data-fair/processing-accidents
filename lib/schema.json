@@ -2,9 +2,9 @@
   {
     "key": "Num_Acc",
     "type": "string",
-    "title": "Identifiant accident",
-    "description": "Numéro d'identification de l'accident",
-    "x-group": "Identifiant de l'accident",
+    "title": "Identifiant de l'accident",
+    "description": "Identifiant unique de l'accident ; partagé par toutes les lignes décrivant le même accident (une ligne par victime).",
+    "x-group": "Accident",
     "x-capabilities": {
       "insensitive": false,
       "textAgg": false,
@@ -13,6 +13,10 @@
       "values": false
     },
     "x-transform": {
+      "expr": "",
+      "examples": [
+        ""
+      ],
       "type": "string"
     }
   },
@@ -21,19 +25,22 @@
     "type": "string",
     "format": "date",
     "title": "Date de l'accident",
-    "description": "Date de l'accident",
-    "x-group": "Date de l'accident",
+    "x-group": "Accident",
     "x-refersTo": "http://schema.org/Date",
     "x-capabilities": {
       "textStandard": false
+    },
+    "x-transform": {
+      "type": "string",
+      "format": "date"
     }
   },
   {
     "key": "an",
     "type": "integer",
     "title": "Année de l'accident",
-    "description": "Année de l'accident",
-    "x-group": "Date de l'accident",
+    "description": "Année de l'accident, extraite de la colonne date.",
+    "x-group": "Accident",
     "x-capabilities": {
       "insensitive": false,
       "textAgg": false,
@@ -46,8 +53,7 @@
     "key": "mois",
     "type": "string",
     "title": "Mois de l'accident",
-    "description": "Mois de l'accident",
-    "x-group": "Date de l'accident",
+    "x-group": "Accident",
     "x-labels": {
       "janvier": "01-Janvier",
       "février": "02-Février",
@@ -73,9 +79,9 @@
   {
     "key": "jour",
     "type": "string",
-    "title": "Jour de l'accident",
-    "description": "Jour de l'accident",
-    "x-group": "Date de l'accident",
+    "title": "Jour de la semaine",
+    "description": "Jour de la semaine (lundi à dimanche), et non jour du mois",
+    "x-group": "Accident",
     "x-capabilities": {
       "insensitive": false,
       "textAgg": false,
@@ -88,8 +94,8 @@
     "key": "hrmn",
     "type": "string",
     "title": "Heure de l'accident",
-    "description": "Heure de l'accident",
-    "x-group": "Date de l'accident",
+    "description": "Heure de l'accident au format HH:MM.",
+    "x-group": "Accident",
     "x-capabilities": {
       "insensitive": false,
       "textAgg": false,
@@ -101,8 +107,8 @@
     "key": "dep",
     "type": "string",
     "title": "Département",
-    "description": "Département de l'accident",
-    "x-group": "Localisation de l'accident",
+    "description": "Code INSEE du département : 2 caractères (01 à 95, 2A, 2B) ou 3 pour l'outre-mer (971, 972…).",
+    "x-group": "Localisation",
     "x-refersTo": "http://rdf.insee.fr/def/geo#codeDepartement",
     "x-capabilities": {
       "insensitive": false,
@@ -115,8 +121,7 @@
     "key": "com",
     "type": "string",
     "title": "Code commune",
-    "description": "code commune de l'accident",
-    "x-group": "Localisation de l'accident",
+    "x-group": "Localisation",
     "x-refersTo": "http://rdf.insee.fr/def/geo#codeCommune",
     "x-capabilities": {
       "insensitive": false,
@@ -129,8 +134,8 @@
     "key": "lat",
     "type": "number",
     "title": "Latitude",
-    "description": "Latitude de l'accident",
-    "x-group": "Localisation de l'accident",
+    "description": "Vide si l'accident n'est pas géolocalisé (fréquent avant 2019).",
+    "x-group": "Localisation",
     "x-refersTo": "http://schema.org/latitude",
     "x-capabilities": {
       "insensitive": false,
@@ -144,8 +149,8 @@
     "key": "long",
     "type": "number",
     "title": "Longitude",
-    "description": "Longitude de l'accident",
-    "x-group": "Localisation de l'accident",
+    "description": "Vide si l'accident n'est pas géolocalisé (fréquent avant 2019).",
+    "x-group": "Localisation",
     "x-refersTo": "http://schema.org/longitude",
     "x-capabilities": {
       "insensitive": false,
@@ -158,9 +163,8 @@
   {
     "key": "agg",
     "type": "integer",
-    "title": "agglomération",
-    "description": "Accident en agglomération ou hors agglomération",
-    "x-group": "Informations sur l'accident",
+    "title": "En agglomération",
+    "x-group": "Accident",
     "x-labels": {
       "1": "Hors agglomération",
       "2": "En agglomération"
@@ -177,8 +181,7 @@
     "key": "int",
     "type": "integer",
     "title": "Type d'intersection",
-    "description": "Type d'intersection de l'accident",
-    "x-group": "Informations sur l'accident",
+    "x-group": "Accident",
     "x-labels": {
       "0": "Non renseigné",
       "1": "Hors intersection",
@@ -203,8 +206,7 @@
     "key": "col",
     "type": "integer",
     "title": "Type de collision",
-    "description": "Type de collision de l'accident",
-    "x-group": "Informations sur l'accident",
+    "x-group": "Accident",
     "x-labels": {
       "1": "Deux véhicules - frontale",
       "2": "Deux véhicules - par l'arrière",
@@ -227,8 +229,7 @@
     "key": "lum",
     "type": "integer",
     "title": "Luminosité",
-    "description": "Luminosité durant l'accident",
-    "x-group": "Informations sur l'accident",
+    "x-group": "Conditions",
     "x-labels": {
       "1": "Plein jour",
       "2": "Crépuscule ou aube",
@@ -244,9 +245,8 @@
   {
     "key": "atm",
     "type": "integer",
-    "title": "Conditions atmosphériques",
-    "description": "Conditions atmosphériques durant l'accident",
-    "x-group": "Informations sur l'accident",
+    "title": "Conditions météorologiques",
+    "x-group": "Conditions",
     "x-labels": {
       "1": "Normale",
       "2": "Pluie légère",
@@ -270,9 +270,8 @@
   {
     "key": "catr",
     "type": "integer",
-    "title": "Catégorie route",
-    "description": "Catégorie de route de l'accident",
-    "x-group": "Informations sur l'accident",
+    "title": "Catégorie de route",
+    "x-group": "Lieu et route",
     "x-labels": {
       "1": "Autoroute",
       "2": "Route nationale",
@@ -294,9 +293,8 @@
   {
     "key": "circ",
     "type": "integer",
-    "title": "Circulation",
-    "description": "Circulation durant l'accident",
-    "x-group": "Informations sur l'accident",
+    "title": "Régime de circulation",
+    "x-group": "Lieu et route",
     "x-labels": {
       "1": "A sens unique",
       "2": "Bidirectionnelle",
@@ -314,23 +312,22 @@
   },
   {
     "key": "nbv",
-    "type": "string",
+    "type": "integer",
     "title": "Nombre de voies",
-    "description": "Nombre de voies de circulation de l'accident",
-    "x-group": "Informations sur l'accident",
+    "description": "Nombre total de voies de circulation.",
+    "x-group": "Lieu et route",
     "x-labels": {
       "-1": "Non renseigné"
     },
-    "x-capabilities": {
-      "textStandard": false
+    "x-transform": {
+      "type": "integer"
     }
   },
   {
     "key": "prof",
     "type": "integer",
     "title": "Profil en long",
-    "description": "Profil en long de la route de l'accident",
-    "x-group": "Informations sur l'accident",
+    "x-group": "Lieu et route",
     "x-labels": {
       "1": "Plat",
       "2": "Pente",
@@ -350,8 +347,7 @@
     "key": "plan",
     "type": "integer",
     "title": "Tracé en plan",
-    "description": "Tracé en plan de la route de l'accident",
-    "x-group": "Informations sur l'accident",
+    "x-group": "Lieu et route",
     "x-labels": {
       "1": "Partie rectiligne",
       "2": "En courbe à gauche",
@@ -370,9 +366,9 @@
   {
     "key": "lartpc",
     "type": "number",
-    "title": "Largeur du TPC",
-    "description": "Largeur du terre-plein central (TPC) s'il existe (en m)",
-    "x-group": "Informations sur l'accident",
+    "title": "Largeur du terre-plein central",
+    "description": "Largeur en mètres",
+    "x-group": "Lieu et route",
     "x-labels": {
       "0": "Aucun"
     },
@@ -388,8 +384,8 @@
     "key": "larrout",
     "type": "number",
     "title": "Largeur de la chaussée",
-    "description": "Largeur de la chaussée affectée à la circulation du sens de l'accident (en m)",
-    "x-group": "Informations sur l'accident",
+    "description": "Largeur en mètres",
+    "x-group": "Lieu et route",
     "x-labels": {
       "0": "Aucun",
       "-1": "Non renseigné"
@@ -405,9 +401,8 @@
   {
     "key": "surf",
     "type": "integer",
-    "title": "Etat de la surface",
-    "description": "Etat de la surface de la route de l'accident",
-    "x-group": "Informations sur l'accident",
+    "title": "État de la surface",
+    "x-group": "Conditions",
     "x-labels": {
       "1": "Normale",
       "2": "Mouillée",
@@ -431,9 +426,8 @@
   {
     "key": "infra",
     "type": "integer",
-    "title": "Aménagement - Infrastructure",
-    "description": "Infrastructure de la route de l'accident",
-    "x-group": "Informations sur l'accident",
+    "title": "Infrastructure",
+    "x-group": "Lieu et route",
     "x-labels": {
       "0": "Aucun",
       "1": "Souterrain - tunnel",
@@ -458,9 +452,8 @@
   {
     "key": "situ",
     "type": "integer",
-    "title": "Situation",
-    "description": "Situation de l'accident",
-    "x-group": "Informations sur l'accident",
+    "title": "Situation de l'accident",
+    "x-group": "Lieu et route",
     "x-labels": {
       "0": "Aucun",
       "1": "Sur chaussée",
@@ -482,10 +475,10 @@
   },
   {
     "key": "grav",
-    "type": "string",
-    "title": "Gravité",
-    "description": "Gravité de l'accident",
-    "x-group": "Informations sur la victime",
+    "type": "integer",
+    "title": "Gravité de la blessure",
+    "description": "Depuis 2018, la catégorie « Blessé hospitalisé » n'est pas comparable aux années précédentes (changement de saisie par les forces de l'ordre).",
+    "x-group": "Victime",
     "x-labels": {
       "1": "Indemne",
       "2": "Tué",
@@ -493,19 +486,16 @@
       "4": "Blessé léger",
       "-1": "Non renseigné"
     },
-    "x-capabilities": {
-      "textStandard": false
-    },
     "x-transform": {
-      "type": "string"
+      "expr": "",
+      "type": "integer"
     }
   },
   {
     "key": "sexe",
     "type": "integer",
     "title": "Sexe",
-    "description": "Sexe de la victime",
-    "x-group": "Informations sur la victime",
+    "x-group": "Victime",
     "x-labels": {
       "1": "Masculin",
       "2": "Féminin",
@@ -518,9 +508,9 @@
   {
     "key": "age",
     "type": "integer",
-    "title": "Age",
-    "description": "Age de la victime",
-    "x-group": "Informations sur la victime",
+    "title": "Âge de la victime",
+    "description": "Âge en années, calculé à partir de l'année de naissance ; vide si elle est inconnue.",
+    "x-group": "Victime",
     "x-capabilities": {
       "textStandard": false
     }
@@ -529,8 +519,7 @@
     "key": "trajet",
     "type": "integer",
     "title": "Motif de déplacement",
-    "description": "Trajet de la victime",
-    "x-group": "Informations sur la victime",
+    "x-group": "Victime",
     "x-labels": {
       "0": "Non renseigné",
       "1": "Domicile - travail",
@@ -548,9 +537,9 @@
   {
     "key": "secuexist",
     "type": "integer",
-    "title": "Usage de sécurité",
-    "description": "Critère indiquant si la victime utilisait un équipement de sécurité",
-    "x-group": "Informations sur la victime",
+    "title": "Utilisation d'un équipement de sécurité",
+    "description": "Jusqu'en 2018 : utilisation déclarée de l'équipement de sécurité. Depuis 2019 : 1 si au moins un équipement est renseigné, 2 sinon.",
+    "x-group": "Victime",
     "x-labels": {
       "1": "Oui",
       "2": "Non",
@@ -563,10 +552,10 @@
   {
     "key": "equipement",
     "type": "string",
-    "title": "Equipement",
-    "description": "Equipement de la victime",
-    "x-group": "Informations sur la victime",
-    "separator": "/",
+    "title": "Type d'équipement de sécurité",
+    "description": "Équipements de sécurité utilisés : un seul jusqu'en 2018, jusqu'à trois depuis 2019.",
+    "x-group": "Victime",
+    "separator": " / ",
     "x-labels": {
       "0": "Aucun équipement",
       "1": "Ceinture",
@@ -579,7 +568,7 @@
       "8": "Non déterminable",
       "9": "Autre",
       "-1": "Non renseigné",
-      " ": "Non renseigné"
+      "": "Non renseigné"
     },
     "x-capabilities": {
       "insensitive": false,
@@ -592,8 +581,7 @@
     "key": "obs",
     "type": "integer",
     "title": "Obstacle fixe heurté",
-    "description": "Obstacle fixe heurté durant l'accident (si obstacle fixe heurté)",
-    "x-group": "Informations sur l'accident",
+    "x-group": "Véhicule",
     "x-labels": {
       "0": "Sans objet",
       "1": "Véhicule en stationnement",
@@ -612,7 +600,7 @@
       "14": "Autre obstacle fixe sur chaussée",
       "15": "Autre obstacle fixe sur trottoir ou accotement",
       "16": "Sortie de chaussée sans obstacle",
-      "17": "Buse - tête de pont",
+      "17": "Buse - tête d'aqueduc",
       "-1": "Non renseigné"
     },
     "x-capabilities": {
@@ -627,16 +615,14 @@
     "key": "obsm",
     "type": "integer",
     "title": "Obstacle mobile heurté",
-    "description": "Obstacle mobile heurté durant l'accident (si obstacle mobile heurté)",
-    "x-group": "Informations sur l'accident",
+    "x-group": "Véhicule",
     "x-labels": {
       "0": "Aucun",
       "1": "Piéton",
       "2": "Véhicule",
-      "3": "Véhicule sur rail",
-      "4": "Animal domestique",
-      "5": "Animal sauvage",
-      "6": "Animal domestique",
+      "4": "Véhicule sur rail",
+      "5": "Animal domestique",
+      "6": "Animal sauvage",
       "9": "Autre",
       "-1": "Non renseigné"
     },
@@ -651,9 +637,8 @@
   {
     "key": "choc",
     "type": "integer",
-    "title": "Choc subi",
-    "description": "Description du choc subi (si choc)",
-    "x-group": "Informations sur l'accident",
+    "title": "Point de choc",
+    "x-group": "Véhicule",
     "x-labels": {
       "0": "Aucun",
       "1": "Avant",
@@ -679,8 +664,7 @@
     "key": "manv",
     "type": "integer",
     "title": "Manoeuvre avant l'accident",
-    "description": "Manoeuvre du véhicule avant l'accident (si manoeuvre)",
-    "x-group": "Informations sur les autres véhicules liés à l'accident",
+    "x-group": "Véhicule",
     "x-labels": {
       "0": "Inconnue",
       "1": "Sans changement de direction",
@@ -689,7 +673,7 @@
       "4": "En marche arrière",
       "5": "A contresens",
       "6": "En franchissant le terre-plein central",
-      "7": "Dans le couloir bus, dans le me sens",
+      "7": "Dans le couloir bus, dans le même sens",
       "8": "Dans le couloir bus, dans le sens inverse",
       "9": "En s'insérant",
       "10": "En faisant demi-tour sur la chaussée",
@@ -703,11 +687,11 @@
       "18": "Dépassant à droite",
       "19": "Traversant la chaussée",
       "20": "Manoeuvre de stationnement",
-      "21": "Manoeuvre d'évitemment",
+      "21": "Manœuvre d'évitement",
       "22": "Ouverture de porte",
-      "23": "Arrêté (horstationnement)",
+      "23": "Arrêté (hors stationnement)",
       "24": "En stationnement (avec occupants)",
-      "25": "Circulant sur troitoir",
+      "25": "Circulant sur trottoir",
       "26": "Autres manoeuvres",
       "-1": "Non renseigné"
     },
@@ -723,8 +707,8 @@
     "key": "vehiculeid",
     "type": "string",
     "title": "Identifiant du véhicule",
-    "description": "Identifiant du véhicule lié à l'accident, (format : id accident + id véhicule)",
-    "x-group": "Informations sur les autres véhicules liés à l'accident",
+    "description": "Identifiant du véhicule cycliste au sein de l'accident, préfixé par le numéro d'accident.",
+    "x-group": "Véhicule",
     "x-capabilities": {
       "insensitive": false,
       "textAgg": false,
@@ -737,14 +721,14 @@
     "key": "typevehicules",
     "type": "string",
     "title": "Type des autres véhicules",
-    "description": "Type des véhicules liés à l'accident",
-    "x-group": "Informations sur les autres véhicules liés à l'accident",
-    "separator": "/",
+    "description": "Catégories des autres véhicules impliqués, hors vélos ; 1 (bicyclette) si tous les autres véhicules sont des vélos.",
+    "x-group": "Véhicule",
+    "separator": " / ",
     "x-labels": {
       "0": "Indeterminable",
       "1": "Bicyclette",
       "2": "Cyclomoteur <50cm3",
-      "3": "Voiturette (Quadricycle à moteur carrossé) ",
+      "3": "Voiturette (Quadricycle à moteur carrossé)",
       "4": "Scooter immatriculé",
       "5": "Motocyclette",
       "6": "Side car",
@@ -793,10 +777,10 @@
   {
     "key": "manoeuvehicules",
     "type": "string",
-    "title": "Manoeuvre du véhicule lié à l'accident",
-    "description": "Manoeuvre des véhicules liés à l'accident (si manoeuvre)",
-    "x-group": "Informations sur les autres véhicules liés à l'accident",
-    "separator": "/",
+    "title": "Manœuvre des autres véhicules",
+    "description": "Manœuvres des autres véhicules impliqués, hors vélos ; celles des autres vélos si tous les autres véhicules sont des vélos.",
+    "x-group": "Véhicule",
+    "separator": " / ",
     "x-labels": {
       "0": "Inconnue",
       "1": "Sans changement de direction",
@@ -805,7 +789,7 @@
       "4": "En marche arrière",
       "5": "À contre-sens",
       "6": "En franchissant le terre-plein central",
-      "7": "Dans le couloir bus, dans le me sens",
+      "7": "Dans le couloir bus, dans le même sens",
       "8": "Dans le couloir bus, dans le sens inverse",
       "9": "En s'insérant",
       "10": "En faisant demi-tour sur la chaussée",
@@ -819,11 +803,11 @@
       "18": "Dépassant à droite",
       "19": "Traversant la chaussée",
       "20": "Manoeuvre de stationnement",
-      "21": "Manoeuvre d'évitemment",
+      "21": "Manœuvre d'évitement",
       "22": "Ouverture de porte",
-      "23": "Arrêté (horstationnement)",
+      "23": "Arrêté (hors stationnement)",
       "24": "En stationnement (avec occupants)",
-      "25": "Circulant sur troitoir",
+      "25": "Circulant sur trottoir",
       "26": "Autres manoeuvres",
       "-1": "Non renseigné"
     },
@@ -839,8 +823,8 @@
     "key": "numVehicules",
     "type": "integer",
     "title": "Nombre d'autres véhicules",
-    "description": "Nombre d'autres véhicules liés à l'accident",
-    "x-group": "Informations sur les autres véhicules liés à l'accident",
+    "description": "Nombre d'autres véhicules impliqués, hors vélos ; si tous les autres véhicules sont des vélos, nombre d'autres vélos.",
+    "x-group": "Véhicule",
     "x-capabilities": {
       "insensitive": false,
       "textAgg": false,

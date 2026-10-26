@@ -70,7 +70,8 @@ export default async (year: number, dir: string, log: ProcessingContext<Processi
     if (row.Num_Acc !== undefined) {
       for (const [key, value] of Object.entries(row)) {
         if (keyLieux.has(key)) {
-          accidents[row.Num_Acc][key] = value
+          // nbv is an integer column, the source sometimes has "#VALEURMULTI"
+          accidents[row.Num_Acc][key] = (key === 'nbv' && isNaN(Number(value))) ? '' : value
         }
       }
     }
