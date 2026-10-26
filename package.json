@@ -1,6 +1,6 @@
 {
   "name": "@data-fair/processing-accidents",
-  "version": "0.2.8",
+  "version": "0.3.0",
   "description": "Load the French road accidents database (BAAC) and keep the accidents involving a bicycle",
   "main": "index.ts",
   "type": "module",
